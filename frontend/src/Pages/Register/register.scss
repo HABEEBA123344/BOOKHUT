@@ -1,0 +1,49 @@
+.Container{
+    display : grid;
+    height: 100vh;
+    width: 100%;
+    grid-template-columns: repeat(2,50%);
+    margin:0;
+}
+.left{
+    min-height: 50vh;
+}
+.outer1{
+    width : 205px;
+    display:grid;
+    grid-template-columns: repeat(2,auto);
+    grid-gap: 5px;
+    margin-left: 30%;
+    margin-top: 5%;
+}
+.logo1{
+    color:black;
+    
+}
+.bookhut{
+    color:black;
+    height: 40px;
+}
+.right{
+
+
+    background-color: #e1e9fc;
+    padding:0 10%;
+}
+form{
+    margin-top: 0;
+}
+.image{
+    width: 100%;
+    margin: 0 10% 0 1%;
+ 
+}
+.register{
+    text-align: center;
+    color: navy;
+    padding-top:10%;
+}
+.logo1{
+    color: black;
+    height: 10px;
+}

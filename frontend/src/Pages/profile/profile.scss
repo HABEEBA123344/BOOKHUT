@@ -1,0 +1,27 @@
+.user{
+    width: 150px;
+    height: 150px;
+    margin-top:6%;
+    // color:rgba(100, 149, 237,0.8);
+    color:white;
+}
+.profile1{
+    background-color:rgba(40, 58, 90, 0.9);
+color: white;
+height: 400px;
+}
+.mybook2,.sharedbook,.borrowedbook,.myrequest{
+    color: black;
+}
+.mybook2:hover,.sharedbook:hover,.borrowedbook:hover,.myrequest:hover{
+    background-color: rgb(40, 58, 90);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+  }
+  .filter-active{
+    background-color: rgb(40, 58, 90);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+  }

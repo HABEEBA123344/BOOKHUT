@@ -1,0 +1,47 @@
+.view {
+  width: 100%;
+  min-height: 100vh;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.books1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.Search {
+  margin: auto;
+  padding: 8% 8% 0% 8%;
+  width: 60%;
+}
+.search {
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+}
+
+.search input {
+  height: 50px;
+  text-indent: 25px;
+  border: 2px solid #d6d4d4;
+}
+
+.search input:focus {
+  box-shadow: none;
+  border: 2px solid blue;
+}
+
+.search .fa-search {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+}
+
+.search button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 40px;
+  width: 50px;
+  background: blue;
+}

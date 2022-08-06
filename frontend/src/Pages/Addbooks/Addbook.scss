@@ -1,0 +1,30 @@
+.add-task-btn {
+  width: 100%;
+  background-color: rgba(40, 58, 90, 0.9);
+  border: none;
+}
+.add-task-btn:hover,
+.add-task-btn:active,
+.add-task-btn:focus {
+  width: 100%;
+  background-color: rgba(40, 58, 90, 0.9);
+  text-decoration-line: underline;
+  border: none;
+}
+.Container2 {
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  height: 400px;
+  min-height: 80px;
+  box-shadow: rgba(0, 0, 0,0.24) 0px 3px 8px;
+  border-radius: 10px;
+  padding: 30px 20px;
+}
+.main2 {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(1, 1fr);
+  background: #e1e9fc;
+}

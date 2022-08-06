@@ -1,0 +1,60 @@
+.requests {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    // padding: 50px;
+  }
+  
+  .custom-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .request1 {
+    display: grid;
+    // grid-template-columns: repeat(2, auto);
+    text-align: left;
+    box-shadow: rgba(0, 0, 0,0.24) 0px 3px 8px;
+    padding: 15px;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  
+    i {
+      color: purple;
+      font-size: 20px;
+    }
+  
+    p:nth-child(odd) {
+      font-weight: 400px;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    p:nth-child(even) {
+      font-weight: 400px;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+  
+    p:nth-child(odd) {
+      margin-bottom: 0;
+    }
+    p:nth-child(even) {
+      margin-bottom: 0;
+    }
+  }
+  
+  .icon{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 35px;
+    justify-content: space-between;
+  }
+  .edit {
+    font-size: 19px;
+  }
+  .detail{
+    padding: 10px 0px 10px 15px;
+   }
+   

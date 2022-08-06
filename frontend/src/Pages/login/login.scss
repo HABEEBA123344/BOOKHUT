@@ -1,0 +1,34 @@
+.container1{
+    display : grid;
+    height: 100vh;
+    grid-template-columns: repeat(2,1fr);
+    margin:0;
+}
+.left{
+    height: 100vh;
+}
+.image{
+    width: 100%;
+    margin: 10% 10% 10% 1%;
+ 
+}
+.right1{
+    height: 100vh;
+    background-color: #e1e9fc;
+    padding: 15% 10%;
+   }
+form{
+    margin-bottom: 3vh;
+    margin-top: 30%;
+}
+.login{
+    text-align: center;
+    color: navy;
+    padding-top:10%;
+}
+.btn-primary{
+    background-color: cornflowerblue;
+}
+.reg{
+    color: black;
+}
