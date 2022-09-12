@@ -1,50 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import "./profile.scss";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 
 export default function Profile() {
-  // const navigate = useNavigate;
-  // const [userData, setUserData] = useState(); 
-
-  // const callProfile = async() =>{
-  //   try{
-  //     const res = await fetch("/profile", {
-  //       method: "GET",
-  //       headers: {
-  //         Accept : "application/json",
-  //         "Content-Type": "application/json"
-  //       },
-  //       credentials:"include"
-  //     });
-  //     const data = await res.json();
-  //     setUserData(data);
-  //     if(!data){
-  //       const error = new Error(res.error);
-  //       throw error;
-  //     }
-  //   }catch(err){
-  //     console.log(err);
-  //   }
-    
-  // }
-  // useEffect(() => {
-  //   callProfile();
-  // }, []);
   return (
     <div>
       <Header />
-      <div className="profile1" method="GET">
+      <div className="profile1">
         <span
           className="iconify user"
           data-icon="bxs:user-circle"
           width="200px"
           height="200px"
         ></span>
-        <h2>Habeeba M K</h2>
-        <p>habimammu@gmail.com</p>
-        <p>9961867658</p>
-        <p>S6 CSE</p>
+        <h2>name</h2>
+        <p>email</p>
+        <p>phone</p>
+        <p>year department</p>
       </div>
       <div id="profile" className="profile mt-4">
         <div className="container nav2" >

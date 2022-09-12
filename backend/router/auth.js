@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-
+const jwt=require("jsonwebtoken");
 require('../db/conn');
 const User = require("../models/userSchema");
 const Book = require("../models/bookSchema");
@@ -18,6 +18,7 @@ router.post('/register', jsonParser , async(req,res)=>{
   }
   try{
     const userExist = await User.findOne({email:email});
+
     if(userExist){
       return res.status(422).json({error:"Email already exist"});
     }
@@ -44,7 +45,6 @@ router.post('/login',jsonParser ,async(req,res)=>{
     const userLogin = await User.findOne({email:email, password: password});
     
     if(userLogin){
-      
         res.status(201).json({message:"User login successfully"});
       
     }else{
@@ -55,8 +55,6 @@ router.post('/login',jsonParser ,async(req,res)=>{
   }
 });
 
-router.get('/profile',(req,res) => {
-  console.log("Hello my about");
-  res.send(req.User);
-});
+
+
 module.exports=router;
