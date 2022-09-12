@@ -7,9 +7,10 @@ export default function Register() {
   const [user, setUser] = useState({
     name: "",
     email: "",
-    phone: "",
-    cls: "",
     password: "",
+    phone: "",
+    department: "",
+    year: "",
   });
   let name, value;
   const handleInputs = (e) => {
@@ -21,14 +22,14 @@ export default function Register() {
 
   const PostData = async (e) => {
     e.preventDefault();
-    const { name, email, phone, cls, password } = user;
+    const { name, email, password, phone, department,year } = user;
     const res = await fetch("/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name, email, phone, cls, password
+        name, email, password, phone, department,year
       })
     });
     const data = await res.json();
@@ -41,6 +42,14 @@ export default function Register() {
       window.alert("Invalid Registration");
       console.log("Invalid Registration");
     }
+  }
+  function getSelectDepart(){
+    user.department=document.getElementById("depart").value;
+    console.log(user.department);
+  }
+  function getSelectYear(){
+    user.year=document.getElementById("year").value;
+    console.log(user.year);
   }
 
   return (
@@ -96,6 +105,20 @@ export default function Register() {
             />
           </div>
           <div className="mb-3">
+            <label for="exampleInputPassword1" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              id="exampleInputPassword1"
+              value={user.password}
+              onChange={handleInputs}
+              required
+            />
+          </div>
+          <div className="mb-3">
             <label for="exampleInputPhone" className="form-label">
               Phone No
             </label>
@@ -109,33 +132,30 @@ export default function Register() {
               required
             />
           </div>
-          <div className="mb-3">
-            <label for="exampleInputClass" className="form-label">
-              Class
-            </label>
-            <input
-              type="text"
-              name="cls"
-              className="form-control"
-              id="exampleInputClass"
-              value={user.cls}
-              onChange={handleInputs}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              value={user.password}
-              onChange={handleInputs}
-              required
-            />
+          <div className="mb-3 cls">
+            <div className="depart">
+              <label className="department">Department : </label>
+              <select id="depart" onChange={getSelectDepart}>
+                <option value="Select">Select</option>
+                <option value="CE">CE</option>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="ME">ME</option>
+              </select>
+            </div>
+            <div className="year">
+              <label className="form-label yr">
+                Year : 
+              </label>
+              <select id="year" onChange={getSelectYear}>
+                <option value="Select">Select</option>
+                <option value="1">1st</option>
+                <option value="2">2nd</option>
+                <option value="3">3rd</option>
+                <option value="4">4th</option>
+              </select>
+            </div>
           </div>
           <div className="text-center">
             {/* <Link to="/"> */}

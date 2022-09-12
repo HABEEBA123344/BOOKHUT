@@ -11,9 +11,9 @@ router.get('/', (req, res) => {
 
 //register route
 router.post('/register', jsonParser , async(req,res)=>{
-  const { name, email, phone, cls, password} = req.body;
+  const { name, email, phone, password, department,year} = req.body;
 
-  if(!name || !email || !phone || !cls || !password){
+  if(!name || !email || !phone || !department || !year|| !password){
     return res.status(422).json({error:"Plz fill the field properly"});
   }
   try{
@@ -21,7 +21,7 @@ router.post('/register', jsonParser , async(req,res)=>{
     if(userExist){
       return res.status(422).json({error:"Email already exist"});
     }
-    const user = new User({name, email, phone, cls, password});
+    const user = new User({name, email,password, phone,department,year });
     const userRegister = await user.save();
     if(userRegister){
       res.status(201).json({message:"User registered successfully"});
@@ -54,27 +54,6 @@ router.post('/login',jsonParser ,async(req,res)=>{
     console.log(err);
   }
 });
-
-// addbook route
-router.post('/addbook', jsonParser , async(req,res)=>{
-  const { name, author, language, category} = req.body;
-
-  if(!name || !author || !language || !category){
-    return res.status(422).json({error:"Plz fill the field properly"});
-  }
-  try{
-
-    const book = new Book({name, author, language, category});
-    const bookAdd = await book.save();
-    if(bookAdd){
-      res.status(201).json({message:"Book added successfully"});
-    }else{
-      res.status(500).json({error:"Failed to add"});
-    }
-  }
-  catch(err){
-    console.log(err);
-  }});
 
 router.get('/profile',(req,res) => {
   console.log("Hello my about");

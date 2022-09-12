@@ -47,3 +47,14 @@ form{
     color: black;
     height: 10px;
 }
+.cls{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    grid-gap:10px;
+}
+.department{
+    margin-right: 5px;
+}
+.yr{
+    margin-right: 5px;
+}
