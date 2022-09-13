@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./login.scss";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {dispatch}=useAuthContext()
   const loginUser = async(e) =>{
     e.preventDefault();
     const res = await fetch("/login", {
@@ -26,6 +28,8 @@ export default function Login() {
       }else{
       window.alert("Login successful");
       console.log("Login successful");
+      localStorage.setItem('user',JSON.stringify(data))
+      dispatch({type:'LOGIN',payload:data})
       navigate("/home");
     }
   }

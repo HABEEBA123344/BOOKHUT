@@ -2,23 +2,25 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import "./profile.scss";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Profile() {
+  const {user} = useAuthContext()
   return (
     <div>
       <Header />
-      <div className="profile1">
+      {user && (<div className="profile1">
         <span
           className="iconify user"
           data-icon="bxs:user-circle"
           width="200px"
           height="200px"
         ></span>
-        <h2>name</h2>
-        <p>email</p>
-        <p>phone</p>
-        <p>year department</p>
-      </div>
+        <h2>{user.name}</h2>
+        <p>{user.email}</p>
+        <p>{user.phone}</p>
+        <p>{user.year} {user.depart}</p>
+      </div>)}
       <div id="profile" className="profile mt-4">
         <div className="container nav2" >
           <nav>

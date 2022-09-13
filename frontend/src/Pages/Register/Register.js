@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./register.scss";
 import { Link, useNavigate, } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -12,6 +13,8 @@ export default function Register() {
     department: "",
     year: "",
   });
+  const {dispatch}=useAuthContext()
+
   let name, value;
   const handleInputs = (e) => {
     console.log(e);
@@ -37,9 +40,11 @@ export default function Register() {
     if(!data.error){
       window.alert("Registration successful");
       console.log("Registration successful");
+      localStorage.setItem('user',JSON.stringify(data))
+      dispatch({type:'LOGIN',payload:data})
       navigate("/");
     }else{
-      window.alert("Invalid Registration");
+      window.alert(data.error);
       console.log("Invalid Registration");
     }
   }
