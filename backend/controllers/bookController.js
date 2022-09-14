@@ -9,19 +9,20 @@ const getBooks = async (req,res) => {
 const getBook = async(req,res) =>{
     const id = (req.params.id).trim()
     if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:'No such user'})
+        return res.status(404).json({error:'No such book'})
     }
     const book = await Book.findById(id)
     if(!book){
         return res.status(404).json({error:'No such user'})
     }
-    res.status(200).json(user)
+    res.status(200).json(book)
 }
 
 const deleteBook=async(req,res)=>{
-    const {id}=(req.params.id).trim()
+    const id=req.params['id']
+    console.log(id);
     if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:'No such book'})
+        return res.status(400).json({error:'No such book'})
     }
     const book=await Book.findOneAndDelete({_id:id})
 

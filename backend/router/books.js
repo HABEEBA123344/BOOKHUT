@@ -14,6 +14,6 @@ router.post('/books',jsonParser,async(req,res) => {
 })
 router.get('/books',getBooks)
 router.get('/:id',getBook)
-router.delete('/:id',deleteBook)
+router.delete('/books/:id',deleteBook)
 
 module.exports = router;

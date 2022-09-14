@@ -1,6 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useBookContext } from "../../hooks/useBookContext";
 import "./Mybooks.scss";
 export default function Mybook({ book }) {
+  const navigate=useNavigate()
+  const {dispatch} = useBookContext() 
+  const handleClick = async ()=>{
+    const response =await fetch('books/'+book._id,{
+      method:'DELETE',
+    })
+    const json = await response.json()
+    if(response.ok){
+      console.log(json)
+      navigate('/profile')
+    }
+  }
   return (
     <div className="book">
       <div>
@@ -21,8 +35,8 @@ export default function Mybook({ book }) {
         </p>
       </div>
       <div className="icon">
-        <span class="iconify edit" data-icon="bxs:edit"></span>
-        <span class="iconify" data-icon="fa-solid:trash"></span>
+        <i className="iconify edit" data-icon="bxs:edit"></i>
+        <button onClick={handleClick}><span className="iconify" data-icon="fa-solid:trash"></span></button>
       </div>
     </div>
   );
