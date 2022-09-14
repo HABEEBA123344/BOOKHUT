@@ -1,5 +1,5 @@
 const express = require('express')
-const {getBooks,getBook}=require('../controllers/bookController')
+const {getBooks,getBook,deleteBook}=require('../controllers/bookController')
 const router = express.Router()
 const Book = require('../models/bookSchema')
 
@@ -14,5 +14,6 @@ router.post('/books',jsonParser,async(req,res) => {
 })
 router.get('/books',getBooks)
 router.get('/:id',getBook)
+router.delete('/:id',deleteBook)
 
 module.exports = router;
