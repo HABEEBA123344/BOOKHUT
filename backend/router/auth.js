@@ -4,9 +4,8 @@ const jwt=require("jsonwebtoken");
 const validator=require('validator')
 require('../db/conn');
 const User = require("../models/userSchema");
-const Book = require("../models/bookSchema");
 const {
-  getUsers,getUser,createToken
+  createToken
 } = require('../controllers/usercontroller')
 router.get('/', (req, res) => {
     res.send('hello world from router js');
@@ -62,8 +61,6 @@ router.post('/login',jsonParser ,async(req,res)=>{
   }
 });
 
-//profile page
-router.get('/profile',getUsers);
-router.get('/profile/:id',getUser)
+
 
 module.exports=router;

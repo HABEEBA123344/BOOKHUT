@@ -33,7 +33,10 @@ export default function Details() {
               <b>Name :</b> Pournami K K
             </p>
             <p>
-              <b>Class :</b> S6 CSE
+              <b>Department :</b> CSE
+            </p>
+            <p>
+              <b>Year :</b> 4th
             </p>
             <p>
               <b>Email :</b> pou@gmail.com

@@ -1,62 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Book from "./Book";
 import "./view_books.scss";
 
-let bookInitial = [
-  {
-    id: 1,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    status: "Available",
-  },
-  {
-    id: 2,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    status: "Available",
-  },
-  {
-    id: 3,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    status: "Available",
-  },
-  {
-    id: 4,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    status: "Available",
-  },
-  {
-    id: 5,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    status: "Available",
-  },
-  {
-    id: 6,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    status: "Not Available",
-  },
-  {
-    id: 7,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    status: "Available",
-  },
-  {
-    id: 8,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    status: "Available",
-  },
-];
 export default function Viewbooks() {
-  const [books, setBooks] = useState(bookInitial);
-
+  const [books, setBooks] = useState({});
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const res = await fetch('/books')
+      const data = await res.json()
+      
+      if(res.ok){
+        setBooks(data)
+      }
+    }
+    fetchBooks();
+  },[])
   return (
     <div className="view">
       <Header />
@@ -78,10 +38,10 @@ export default function Viewbooks() {
             return <Book book={item} />;
           })
         ) : (
-          <p>No Tasks To Show Yet</p>
+          <p>No Books To Show Yet</p>
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

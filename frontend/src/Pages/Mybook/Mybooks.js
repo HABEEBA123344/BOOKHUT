@@ -1,71 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Mybook from "./Mybook";
 import Header from "../../components/Header";
 import "./Mybooks.scss";
 import Profile from "../profile/Profile";
 import { Link } from "react-router-dom";
-let booksInitial = [
-  {
-    id: 1,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    category: "Computer Science",
-    language: "English",
-    status: "Available",
-  },
-  {
-    id: 2,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    category: "Computer Science",
-    language: "English",
-    status: "Available",
-  },
-  {
-    id: 3,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    category: "Computer Science",
-    language: "English",
-    status: "Available",
-  },
-  {
-    id: 4,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    category: "Computer Science",
-    language: "English",
-    status: "Available",
-  },
-  {
-    id: 5,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    category: "Computer Science",
-    language: "English",
-    status: "Available",
-  },
-  {
-    id: 6,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    category: "Computer Science",
-    language: "English",
-    status: "Available",
-  },
-  {
-    id: 7,
-    name: "Python for Beginners",
-    author: "Timothy C Needham",
-    category: "Computer Science",
-    language: "English",
-    status: "Available",
-  },
-];
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Mybooks() {
-  const [books, setBooks] = useState(booksInitial);
-
+  const {user} = useAuthContext()
+  const [books, setBooks] = useState({});
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const res = await fetch('/books')
+      const data = await res.json()
+      
+      if(res.ok){
+        setBooks(data);
+      }
+    }
+    fetchBooks();
+  },[])
   return (
     <div>
       <Profile/>
@@ -77,10 +31,12 @@ export default function Mybooks() {
       <div className="books">
         {books.length > 0 ? (
           books.map((item) => {
-            return <Mybook book={item} />;
+            if(item.owner_id==user.id){
+              return <Mybook book={item} />;
+            }
           })
         ) : (
-          <p>No Tasks To Show Yet</p>
+          <p>No Books To Show Yet</p>
         )}
       </div>
     </div>

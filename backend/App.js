@@ -10,7 +10,11 @@ require('./db/conn');
 
 const PORT = process.env.PORT;
 
-app.use(require("./router/auth"));
+usersRouter = require("./router/auth")
+booksRouter = require("./router/books")
+app.use(usersRouter);
+app.use(booksRouter);
+
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -16,6 +16,14 @@ const bookSchema=new mongoose.Schema({
     category:{
         type:String,
         required:true
+    },
+    status:{
+        type:String,
+        required:true
+    },
+    owner_id:{
+        type:String,
+        required:true
     }
 })
 
