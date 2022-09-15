@@ -12,8 +12,10 @@ const PORT = process.env.PORT;
 
 usersRouter = require("./router/auth")
 booksRouter = require("./router/books")
+requestsRouter = require("./router/request")
 app.use(usersRouter);
 app.use(booksRouter);
+app.use(requestsRouter);
 
 
 app.use(express.json());

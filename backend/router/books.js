@@ -13,7 +13,7 @@ router.post('/books',jsonParser,async(req,res) => {
     }
 })
 router.get('/books',getBooks)
-router.get('/:id',getBook)
+router.get('/books/:id',getBook)
 router.delete('/books/:id',deleteBook)
 
 module.exports = router;

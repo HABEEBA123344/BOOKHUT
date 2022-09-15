@@ -12,7 +12,7 @@ export default function Mybook({ book }) {
     const json = await response.json()
     if(response.ok){
       console.log(json)
-      navigate('/profile')
+      navigate('/home')
     }
   }
   return (

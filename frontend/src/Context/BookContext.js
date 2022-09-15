@@ -1,4 +1,4 @@
-import {createContext,useReducer} from 'react'
+import {createContext,useEffect,useReducer} from 'react'
 export const BookContext = createContext()
 
 export const BookReducer = (state,action)=>{
@@ -9,7 +9,7 @@ export const BookReducer = (state,action)=>{
             }
         case 'DELETE_BOOK':
             return{
-                book:state.book.filter((w)=>w._id!==action.payload._id)
+                book:state.book.filter((b)=>b._id !== action.payload._id)
             }
         default:
             return state
@@ -21,7 +21,7 @@ export const BookContextProvider=({children})=>{
         book:{}
     })
     return(
-        <BookContext.Provider value={{state,dispatch}}>
+        <BookContext.Provider value={{...state,dispatch}}>
             {children}
         </BookContext.Provider>
     )
