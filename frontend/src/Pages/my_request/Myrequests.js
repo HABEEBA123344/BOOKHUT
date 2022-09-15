@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import Profile from "../profile/Profile";
 import Myrequest from "./Myrequest";
 import "./Myrequests.scss";
-let requestsInitial = [
-  {
-    id: 1,
-    name: "Python for Beginners",
-  },
-  {
-    id: 2,
-    name: "Python for Beginners",
-  },
-  {
-    id: 3,
-    name: "Python for Beginners",
-  },
-];
 
 export default function Myrequests() {
-  const [requests, setRequests] = useState(requestsInitial);
-
+  const {user} = useAuthContext()
+  const [requests, setRequests] = useState({});
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const res = await fetch('/requests')
+      const data = await res.json()
+      
+      if(res.ok){
+        setRequests(data);
+      }
+    }
+    fetchBooks();
+  },[])
   return (
     <div>
       <Profile/>
@@ -27,7 +25,9 @@ export default function Myrequests() {
       <div className="requests mt-5">
         {requests.length > 0 ? (
           requests.map((item) => {
-            return <Myrequest request={item} />;
+            if(item.borrower_id==user.id){
+              return <Myrequest request={item} />;
+            }
           })
         ) : (
           <p>No Requests To Show Yet</p>

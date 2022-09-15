@@ -1,7 +1,7 @@
 import React ,{useState} from "react";
 import { ButtonToolbar } from "react-bootstrap";
 import "./Notifications.scss";
-export default function Notification({ book }) {
+export default function Notification({ request }) {
     const [accept, setAccept] =useState(false)
     const [val,setVal]=useState([])
     const handleAdd=()=>{
@@ -18,12 +18,9 @@ export default function Notification({ book }) {
     <div className="not">
       <div className="fun">
         <p>
-          <b>{book.head}</b>
+          <b>{request.book_name}</b>
         </p>
-        <p>
-          <b>{book.name}</b>
-        </p>
-        <p>{book.borrower}</p>
+        <p>{request.borrower_name}</p>
       </div>
       
       <div className="buttons controls0">

@@ -11,6 +11,14 @@ const requestSchema=new mongoose.Schema({
     book_id:{
         type:String,
         required:true
+    },
+    book_name:{
+        type:String,
+        required:true
+    },
+    borrower_name:{
+        type:String,
+        required:true
     }
 })
 

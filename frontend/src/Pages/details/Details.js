@@ -25,19 +25,21 @@ export default function Details() {
   const [request] = useState({
     ownerid: book.book.owner_id,
     borrower_id: user.id,
-    book_id: book.book._id
+    book_id: book.book._id,
+    book_name : book.book.name,
+    borrower_name : user.name
   });
   console.log(request)
   const handleClick = async(e) =>{
     e.preventDefault()
-    const { ownerid,borrower_id,book_id} = request;
+    const { ownerid,borrower_id,book_id,book_name,borrower_name} = request;
     const res = await fetch("/requests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ownerid,borrower_id,book_id
+        ownerid,borrower_id,book_id,book_name,borrower_name
       })
     });
     const data= await res.json()

@@ -1,41 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Notification from "./Notification";
 import Header from "../../components/Header"
 import './Notifications.scss'
-let booksInitial = [
-  {
-    id: 1,
-    head:"Book Request",
-    name: "Python for Beginners",
-    borrower : "pournami",
- 
-  },
-   {
-    id: 2,
-    head:"Due Date Extension Request",
-    name: "Python for Beginners",
-    borrower : "pournami",
-  },
-   {
-    id: 3,
-    head:"Book Request",
-    name: "Python for Beginners",
-    borrower : "pournami",
-  },
-  {
-    id: 4,
-    head:"Book Request",
-    name: "Python for Beginners",
-    borrower : "pournami",
-  },
-  
-  
-  
-];
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Notifications() {
-  const [books, setBooks] = useState(booksInitial);
-
+  const {user} = useAuthContext()
+  const [requests, setRequests] = useState({});
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const res = await fetch('/requests')
+      const data = await res.json()
+      
+      if(res.ok){
+        setRequests(data);
+      }
+    }
+    fetchBooks();
+  },[])
   return (
   <div className="notifications">
     
@@ -43,9 +25,11 @@ export default function Notifications() {
     
     <div className="nots mt-5">
      
-      {books.length > 0 ? (
-        books.map((item) => {
-          return <Notification book={item} />;
+      {requests.length > 0 ? (
+        requests.map((item) => {
+          if(item.ownerid==user.id){
+            return <Notification request={item} />;
+          }
         })
       ) : (
         <p>No Tasks To Show Yet</p>

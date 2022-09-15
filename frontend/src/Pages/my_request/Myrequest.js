@@ -7,7 +7,7 @@ export default function Myrequest({ request }) {
         <div>
         <p>
           {/* <b>Book id: </b>{request.id} */}
-          <b>Name:</b> {request.name}
+          <b>Name:</b> {request.book_name}
         </p>
     </div>
     
