@@ -13,10 +13,11 @@ const PORT = process.env.PORT;
 usersRouter = require("./router/auth")
 booksRouter = require("./router/books")
 requestsRouter = require("./router/request")
+acceptsRouter = require("./router/accept")
 app.use(usersRouter);
 app.use(booksRouter);
 app.use(requestsRouter);
-
+app.use(acceptsRouter);
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));

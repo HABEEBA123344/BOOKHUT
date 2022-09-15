@@ -5,7 +5,6 @@ const {getRequests,deleteRequest} = require('../controllers/requestController')
 
 router.post('/requests',jsonParser,async(req,res) => {
     const {ownerid,borrower_id,book_id,book_name,borrower_name} = req.body;
-    console.log(ownerid)
     try{
         const request=await Request.create({ownerid,borrower_id,book_id,book_name,borrower_name})
         res.status(200).json(request)

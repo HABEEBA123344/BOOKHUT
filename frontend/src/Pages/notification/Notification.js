@@ -1,7 +1,19 @@
 import React ,{useState} from "react";
 import { ButtonToolbar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./Notifications.scss";
 export default function Notification({ request }) {
+  const navigate = useNavigate()
+  const handleClick = async ()=>{
+    const response =await fetch('requests/'+request._id,{
+      method:'DELETE',
+    })
+    const json = await response.json()
+    if(response.ok){
+      console.log(json)
+      navigate('/home')
+    }
+  }
     const [accept, setAccept] =useState(false)
     const [val,setVal]=useState([])
     const handleAdd=()=>{
@@ -35,7 +47,7 @@ export default function Notification({ request }) {
           })} */}
         </div>
         <div className="text-center">
-          <button className="btn btn-danger reject-btn">Reject</button>
+          <button className="btn btn-danger reject-btn" onClick={handleClick}>Reject</button>
         </div>
       </div>
     </div>
