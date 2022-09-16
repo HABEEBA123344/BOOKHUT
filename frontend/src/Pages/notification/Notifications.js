@@ -32,7 +32,7 @@ export default function Notifications() {
           }
         })
       ) : (
-        <p>No Tasks To Show Yet</p>
+        <p>No notifications</p>
       )}
     </div>
     </div>

@@ -2,8 +2,12 @@ import React ,{useState} from "react";
 import { ButtonToolbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./Notifications.scss";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 export default function Notification({ request }) {
   const navigate = useNavigate()
+  const [selectedDate, setSelectedDate]=useState(null)
   const handleClick = async ()=>{
     const response =await fetch('requests/'+request._id,{
       method:'DELETE',
@@ -38,7 +42,9 @@ export default function Notification({ request }) {
       <div className="buttons controls0">
         <div className="text-center">
           <button className="btn btn-success accept-btn"  onClick={setdue}>Accept</button>
-          {accept?<input className="set-date"placeholder="Set due date" />:null}
+          {accept?<DatePicker selected={selectedDate} onChange={date=>setSelectedDate(date)}
+       dateFormat='dd/MM/yyyy'
+       showYearDropdown/>:null}
           {accept?<button className="btn btn-primary">Set</button>:null}
           {/* {val.map((data,i)=>
             return(

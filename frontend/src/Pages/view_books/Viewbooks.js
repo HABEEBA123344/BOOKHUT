@@ -5,6 +5,8 @@ import Book from "./Book";
 import "./view_books.scss";
 
 export default function Viewbooks() {
+  const [query,setQuery]=useState('')
+  const [type,setType]=useState('')
   const [books, setBooks] = useState({});
   useEffect(() => {
     const fetchBooks = async () => {
@@ -17,6 +19,46 @@ export default function Viewbooks() {
     }
     fetchBooks();
   },[])
+  const handleInput = (e) => {
+    setQuery(e.target.value);
+  };
+  const handleSearch= async(e) =>{
+    e.preventDefault()
+    setType('text')
+    const res = await fetch('/search', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type,query
+      })
+    });
+    const data = await res.json();
+    if(!data.error){
+      if(data.message){
+        window.alert(data.message);
+      }
+      setBooks(data.books)
+    }
+  }
+  const selectCategory= async() =>{
+    setQuery(document.getElementById("category").value)
+    setType('category')
+    const res = await fetch('/search', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type,query
+      })
+    });
+    const data = await res.json();
+    if(!data.error){
+      setBooks(data.books)
+    }
+  }
   return (
     <div className="view">
       <Header />
@@ -25,11 +67,24 @@ export default function Viewbooks() {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Title/Category"
+            placeholder="Search by Title"
+            value={query}
+            onChange={handleInput}
           />
-          <button className="btn btn-primary">
+          <button className="btn btn-primary" onClick={handleSearch}>
             <i className="fa fa-search"></i>
           </button>
+        </div>
+        <div className="category">
+          <select id="category" onChange={selectCategory}>
+              <option value="Category">Category</option>
+              <option value="CE">CE</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="ME">ME</option>
+              <option value="Fiction">Fiction</option>
+          </select>
         </div>
       </div>
       <div className="books1 mt-5">
