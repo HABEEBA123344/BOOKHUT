@@ -3,15 +3,14 @@
     padding-top: 8%;
     padding-left: 10%;
     padding-right: 10%;
-    padding-bottom: 7%;
+    padding-bottom: 3%;
     text-align: justify;
 }
 .box1{
-   // background-color:aliceblue;
    box-shadow: rgba(0,0,0,0.24)0px 3px 8px;
     margin-left:30%;
     margin-right:30%;
-    margin-top:0px;
+    margin-top:20px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -21,6 +20,42 @@
     font-family: Arial;
     margin-top: 15px;
 margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:20px
+}
+.contain .card{
+    width: 600 px;
+    height: 416 px;
+    padding: 60px 30px;
+    background: white;
+    box-shadow: 0.6em 0.6em 1.2em #d2dce9,
+                -0.5em -0.5em 1em #ffffff;
+    border-radius: 20px;
+}
+.contain .card .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contain .card .content .imgbx{
+    border-radius: 50%;
+    position:relative;
+    margin-bottom :10px;
+    overflow: hidden;
+}
+.contain .card .content .contentbx{
+    font-size: smaller;
+}
+.team{
+    font-family: Arial;
     font-size: 30px;
     font-weight: bold;
 }

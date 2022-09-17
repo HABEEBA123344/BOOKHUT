@@ -1,39 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import Profile from "../profile/Profile";
 import Sharedbook from "./Sharedbook";
 import './Sharedbooks.scss'
-let booksInitial = [
-  {
-    id: 1,
-    name: "Python for Beginners",
-    borrower: "Neha",
-    date_return: "10-07-2022",
-  },
-  {
-    id: 2,
-    name: "Python for Beginners",
-    borrower: "Neha",
-    date_return: "10-07-2022",
-  },
-  {
-    id: 3,
-    name: "Python for Beginners",
-    borrower: "Neha",
-    date_return: "10-07-2022",
-  },
-  {
-    id: 4,
-    name: "Python for Beginners",
-    borrower: "Neha",
-    date_return: "10-07-2022",
-  },
-   
-
-  
-];
 
 export default function Sharedbooks() {
-  const [books, setBooks] = useState(booksInitial);
+  const [books, setBooks] = useState({});
+  const {user} = useAuthContext()
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const res = await fetch('/accepts')
+      const data = await res.json()
+      if(res.ok){
+        setBooks(data);
+        console.log(data)
+      }
+    }
+    fetchBooks();
+  },[])
   return (
   <div className="main4">
     
@@ -43,10 +27,12 @@ export default function Sharedbooks() {
      
       {books.length > 0 ? (
         books.map((item) => {
-          return <Sharedbook book={item} />;
+          if(item.ownerid==user.id){
+            return <Sharedbook book={item} />;
+          }
         })
       ) : (
-        <p>No Tasks To Show Yet</p>
+        <p>No Books</p>
       )}
     </div>
     </div>

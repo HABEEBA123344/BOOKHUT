@@ -1,7 +1,14 @@
 import React from "react";
-import {NavLink, Link } from 'react-router-dom'
+import {NavLink, Link, useNavigate } from 'react-router-dom'
+import { useLogout } from "../hooks/useLogout";
 
 export default function Navbar() {
+  const navigate = useNavigate()
+  const {logout}=useLogout()
+  const handleClick=()=>{
+    logout()
+    navigate('/')
+  }
   return (
     <div className="home">
       <nav id="navbar" className="navbar">
@@ -30,9 +37,9 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <Link className="getstarted scrollto" to="/">
+            <button className="getstarted scrollto logout" onClick={handleClick}>
               Logout
-            </Link>
+            </button>
           </li>
         </ul>
         <i className="bi bi-list mobile-nav-toggle"></i>

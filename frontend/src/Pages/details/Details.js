@@ -3,8 +3,12 @@ import Header from "../../components/Header";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useBookContext } from "../../hooks/useBookContext";
 import "./details.scss";
+import {Link} from 'react-router-dom'
+
 export default function Details() {
+  const [requested,setRequest] = useState('Request')
   const { book } = useBookContext();
+  const [disabled,setDisabled] = useState(false)
   const [users, setUser] = useState({});
   useEffect(() => {
     const fetchBook = async () => {
@@ -31,6 +35,8 @@ export default function Details() {
   });
   console.log(request)
   const handleClick = async(e) =>{
+    setRequest('Requested')
+    setDisabled(true)
     e.preventDefault()
     const { ownerid,borrower_id,book_id,book_name,borrower_name} = request;
     const res = await fetch("/requests", {
@@ -55,6 +61,7 @@ export default function Details() {
         <Header />
       </div>
       <div className="outer">
+      <Link to="/view_books"><i className="iconify back" data-icon="eva:arrow-back-outline"></i></Link>
         <div className="fulldetails">
           <div className="bookdetails">
             <h6>Book Details</h6>
@@ -94,7 +101,7 @@ export default function Details() {
           </div>
         </div>
         <div className="text-center">
-          <button className="btn btn-primary request" onClick={handleClick}>Request</button>
+          <button className="btn btn-primary request" disabled={disabled} onClick={handleClick}>{requested}</button>
         </div>
       </div>
     </div>

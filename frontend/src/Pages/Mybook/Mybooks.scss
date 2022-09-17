@@ -10,21 +10,18 @@
   border-radius: 5px;
 }
 
-.book {
+.book10{
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(1, auto);
   text-align: left;
-  background: #e1e9fc;
+  background:#ffffff ;
+  box-shadow: rgba(0, 0, 0,0.24) 0px 3px 8px;
   padding: 15px;
   margin-left: 35px;
   margin-right: 35px;
   margin-bottom: 20px;
   border-radius: 5px;
 
-  i {
-    color: purple;
-    font-size: 20px;
-  }
   .addbook{
     .add{
       color: black;
@@ -51,13 +48,22 @@
     margin-bottom: 0;
   }
 }
-
-.icon {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding-left: 35px;
-  justify-content: space-between;
+.editss{
+  margin-top: 10px;
+  margin-left : 5px;
 }
-.edit {
-  font-size: 19px;
+
+.delete{
+  margin-top: 10px;
+  margin-left : 5px;
+}
+
+.statuss {
+  background-color: transparent;
+  border: 0;
+  padding: 8px;
+}
+.statuss:hover {
+  background-color: #d3d3d3;
+  cursor: pointer;
 }

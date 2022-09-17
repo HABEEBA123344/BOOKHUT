@@ -5,9 +5,9 @@ export default function Sharedbook({book}) {
     
         <div className='book'>
           <div>
-            <p><b>{book.name}</b></p>
-            <p><b>Owner :</b> {book.owner}</p>
-            <p><b>Date of Return:</b> {book.date_return}</p>
+            <p><b>{book.book_name}</b></p>
+            <p><b>Owner :</b> {book.owner_name}</p>
+            <p><b>Date of Return:</b> {book.dueDate.substring(0,10)}</p>
          </div>
        
         </div>

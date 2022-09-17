@@ -49,9 +49,9 @@ router.post('/login',jsonParser ,async(req,res)=>{
     }
 
     const userLogin = await User.findOne({email:email, password: password});
-    const token= createToken(userLogin._id)
+    // const token= createToken(userLogin._id)
     if(userLogin){
-        res.status(201).json({message:"User login successfully",token,id:userLogin._id,name:userLogin.name,email:userLogin.email,phone:userLogin.phone,depart:userLogin.department,year:userLogin.year});
+        res.status(201).json({message:"User login successfully",id:userLogin._id,name:userLogin.name,email:userLogin.email,phone:userLogin.phone,depart:userLogin.department,year:userLogin.year});
       
     }else{
       res.status(400).json({error:"Invalid credentials"});

@@ -19,7 +19,7 @@ export default function Profile() {
         <h2>{user.name}</h2>
         <p>{user.email}</p>
         <p>{user.phone}</p>
-        <p>{user.year} {user.depart}</p>
+        <p>{user.year} year {user.depart}</p>
       </div>)}
       <div id="profile" className="profile mt-4">
         <div className="container nav2" >
