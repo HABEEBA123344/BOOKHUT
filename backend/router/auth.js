@@ -15,11 +15,11 @@ router.get('/', (req, res) => {
 router.post('/register', jsonParser , async(req,res)=>{
   const { name, email, phone, password, department,year} = req.body;
 
-  if(!name || !email || !phone || !department || !year|| !password){
+  if(!name || !email || !phone || !department || !year|| !password||phone.length!=10){
     return res.status(422).json({error:"Please fill the field properly"});
   }
   if(!validator.isStrongPassword(password)){
-    return res.status(422).json({error:"Password not strong enough"});
+    return res.status(422).json({error:"Password should contain atleast 8 characters(Atleast 1 uppercase letter,1 lowercase letter,1 number and 1 special character)"});
   }
   try{
     const userExist = await User.findOne({email:email});

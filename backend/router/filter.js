@@ -9,6 +9,9 @@ router.post('/search',jsonParser,async(req,res)=>{
         switch(type){
             case 'text':
                 books=await Book.find({name:query})
+                if(!books.length>0){
+                    books= await Book.find({author:query})
+                }
                 break;
             case 'category':
                 books=await Book.find({category:query})

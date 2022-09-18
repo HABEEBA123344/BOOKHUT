@@ -67,7 +67,7 @@ export default function Viewbooks() {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Title"
+            placeholder="Search by Title/Author"
             value={query}
             onChange={handleInput}
           />

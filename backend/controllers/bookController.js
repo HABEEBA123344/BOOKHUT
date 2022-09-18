@@ -3,7 +3,7 @@ const User = require('../models/userSchema')
 const mongoose=require('mongoose')
 
 const getBooks = async (req,res) => {
-    const books= await Book.find({}).sort({createdAt:-1})
+    const books= await Book.find({}).sort({createdAt:1})
     res.status(200).json(books);
 }
 
@@ -32,7 +32,8 @@ const deleteBook=async(req,res)=>{
     if(!book){
         return res.status(400).json({error:'No such book'})
     }
-    res.status(200).json(book)
+    const books=await Book.find({})
+    res.status(200).json(books)
 }
 
 module.exports = {getBooks,getBook,deleteBook}
