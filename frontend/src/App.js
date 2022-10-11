@@ -19,15 +19,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <div>
-        {/* <Login /> */}
-        {/* <Home/> */}
-        {/* <Viewbooks /> */}
-        {/* <Register/> */}
-        {/* <Mybooks/> */}
-        {/* <Addbook/> */}
-        {/* <Myrequests/> */}
-        {/* <Sharedbooks/> */}
-        {/* <Borrowedbooks/> */}
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
