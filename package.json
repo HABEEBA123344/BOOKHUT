@@ -1,11 +1,11 @@
 {
-  "name": "book-hut",
+  "name": "book-sharing-system",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "start": "node App.js",
+    "heroku-postbuild": "cd frontend && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

@@ -16,7 +16,7 @@ requestsRouter = require("./router/request")
 acceptsRouter = require("./router/accept")
 filterRouter = require("./router/filter")
 
-app.use(express.static(path.join(__dirname, "client", "build")))
+app.use(express.static(path.join(__dirname, "frontend", "build")))
 app.use(usersRouter);
 app.use(booksRouter);
 app.use(requestsRouter);
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
 });
 
 app.listen(PORT, () => {
